@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f6f8;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 700px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 8px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #ecf0f1;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #e74c3c;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Management System</h1>
+
+    <h3>Add Student</h3>
+    <form method="POST" action="/add">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <h3>Students List</h3>
+
+    <ul>
+        {% for s in students %}
+        <li>
+            <span>{{ s.name }} - {{ s.age }}</span>
+            <span>
+                <a href="/edit/{{ s.id }}">Edit</a>
+                <a href="/delete/{{ s.id }}">Delete</a>
+                <a href="/logout">Logout</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+</body>
+</html>
