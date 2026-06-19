@@ -57,5 +57,8 @@ def edit(student_id):
     student = next((s for s in students if s["id"] == student_id), None)
 
     return render_template("edit.html", student=student)
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
